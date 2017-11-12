@@ -1,10 +1,26 @@
 let React = require('react');
 
 let AddTodo = React.createClass({
+	propTypes: {
+		onAddTodo: React.PropTypes.func.isRequired
+	},
+	onAddTodo: function(e){
+		e.preventDefault();
+		let text = this.refs.text.value;
+		if(text !== ''){
+			this.refs.text.value = '';
+			this.props.onAddTodo(text);
+		} else {
+			this.refs.text.focus();
+		}
+	},
 	render: function(){
 		return (
 			<div>
-				<h1>AddTodo</h1>
+				<form onSubmit={this.onAddTodo}>
+					<input type="text" ref="text" placeholder="What do you need to do?"/>
+					<button className="button expanded">Add Todo</button>
+				</form>
 			</div>
 		);
 	}

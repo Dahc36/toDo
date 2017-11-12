@@ -14,13 +14,16 @@ let TodoApp = React.createClass({
 			]
 		};
 	},
+	handleAddTodo: function(text){
+		console.log(text);
+	},
 	render: function(){
 		let {todos} = this.state;
 		return (
 			<div>
 				<Search/>
 				<TodoList todos={todos}/>
-				<AddTodo/>
+				<AddTodo onAddTodo={this.handleAddTodo}/>
 			</div>
 		);
 	}
