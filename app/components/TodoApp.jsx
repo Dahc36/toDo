@@ -3,14 +3,27 @@ let Search = require('Search');
 let AddTodo = require('AddTodo');
 let TodoList = require('TodoList');
 
-let TodoApp = (props) => {
-	return (
-		<div>
-			<Search/>
-			<TodoList/>
-			<AddTodo/>
-		</div>
-	);
-};
+let TodoApp = React.createClass({
+	getInitialState: function(){
+		return {
+			todos: [
+				{id: 1, text: 'Walk the dog'},
+				{id: 2, text: 'Clean the yard'},
+				{id: 3, text: 'Finish tutorial'},
+				{id: 4, text: 'Learn redux'}
+			]
+		};
+	},
+	render: function(){
+		let {todos} = this.state;
+		return (
+			<div>
+				<Search/>
+				<TodoList todos={todos}/>
+				<AddTodo/>
+			</div>
+		);
+	}
+});
 
 module.exports = TodoApp;
