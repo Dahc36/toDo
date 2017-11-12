@@ -3,7 +3,7 @@ let Todo = require('Todo');
 
 let TodoList = React.createClass({
 	render: function(){
-		let {todos} = this.props;
+		let {todos, onToggle} = this.props;
 		let renderTodos = () => {
 			/*let tempList = [];
 			for(let todo of todos){
@@ -12,7 +12,7 @@ let TodoList = React.createClass({
 			return tempList;*/
 			return todos.map((todo) => {
 				return (
-					<Todo key={todo.id} {...todo}/>
+					<Todo key={todo.id} {...todo} onToggle={onToggle}/>
 				);
 			});
 		};
