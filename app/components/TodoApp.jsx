@@ -11,17 +11,26 @@ let TodoApp = React.createClass({
 				{id: 2, text: 'Clean the yard'},
 				{id: 3, text: 'Finish tutorial'},
 				{id: 4, text: 'Learn redux'}
-			]
+			],
+			searchText: '',
+			showCompleted: false
 		};
 	},
-	handleAddTodo: function(text){
-		console.log(text);
+	handleSearch: function(searchText,searchCompleted){
+		console.log(searchText,showCompleted);
+		this.setState({
+			searchText: searchText,
+			showCompleted: showCompleted
+		});
+	},
+	handleAddTodo: function(AddText){
+		console.log(AddText);
 	},
 	render: function(){
 		let {todos} = this.state;
 		return (
 			<div>
-				<Search/>
+				<Search onSearch={this.handleSearch}/>
 				<TodoList todos={todos}/>
 				<AddTodo onAddTodo={this.handleAddTodo}/>
 			</div>
